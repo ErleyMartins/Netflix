@@ -4,14 +4,8 @@ import { AxiosError, AxiosResponse, GenericAbortSignal } from "axios";
 export type QueryString = unknown;
 export type Method = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
 
-export interface Paginated<T> {
-  data: Array<T>;
-  pageNumber: number;
-  pageSize: number;
-}
-
 export interface ResponseInfinite<TData> {
-  data: Paginated<AxiosResponse<TData>["data"]>;
+  data: Array<AxiosResponse<TData>["data"]>;
   status: AxiosResponse<TData>["status"];
 }
 

@@ -11,8 +11,9 @@ function buildUrl(
   endpoint: string,
   queryStringObj: QueryString = undefined
 ): string {
-  const url = `${process.env.URL_API}/${endpoint}`;
+  const url = `${import.meta.env.VITE_URL_API}/${endpoint}`;
 
+  console.log({ url });
   if (queryStringObj) {
     return `${url}?${qs.stringify(queryStringObj)}`;
   }
