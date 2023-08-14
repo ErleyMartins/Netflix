@@ -1,7 +1,5 @@
-import { MovieProps } from "./components/Movie";
-
 export interface Props {
-  movies: MovieProps[];
+  terms: string;
 }
 
 export interface QueryMovie {

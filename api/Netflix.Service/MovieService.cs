@@ -13,9 +13,9 @@ public class MovieService : IMovieService
     _repository = repository;
   }
 
-  public async Task<PageList<MovieDto>> GetAll(PageParams pageParams)
+  public async Task<PageList<MovieDto>> GetAll(PageParams pageParams, string? terms = null)
   {
-    var result = await _repository.FindAll(pageParams);
+    var result = await _repository.FindAll(pageParams, terms);
     var data = result.Select(movie => new MovieDto(movie)).ToList();
 
     return PageList<MovieDto>.Parse(data, result.TotalCount, result.CurrentPage, result.PageSize);

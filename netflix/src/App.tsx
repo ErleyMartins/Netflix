@@ -2,15 +2,10 @@ import { ReactElement, useState } from "react";
 
 import { Info, Play } from "components/Button";
 import { Header } from "components/Header";
-import { ListMovies, MovieProps } from "components/ListMovies";
+import { ListMovies } from "components/ListMovies";
 import { Providers } from "components/Providers";
 
 import { IMAGES } from "utils/constants";
-
-const MOVIES = [...new Array(30).keys()].map<MovieProps>(() => ({
-  image: IMAGES.thumb[Math.floor(Math.random() * 12)],
-  name: "Queen's Gambit",
-}));
 
 export default function App(): ReactElement {
   const [search, setSearch] = useState("");
@@ -34,7 +29,7 @@ export default function App(): ReactElement {
           </div>
         </div>
       </div>
-      <ListMovies movies={MOVIES} />
+      <ListMovies terms={search} />
     </Providers>
   );
 }

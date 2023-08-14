@@ -2,7 +2,7 @@ import { ChangeEventHandler, ReactElement, useState } from "react";
 
 import { ReactComponent as NetflixLogo } from "assets/netflix-logo.svg";
 import { ReactComponent as Search } from "assets/search.svg";
-import { ReactComponent as Close } from "assets/Close.svg";
+import { ReactComponent as Close } from "assets/close.svg";
 import { ReactComponent as Bell } from "assets/bell.svg";
 
 import { Link } from "./components/Link";

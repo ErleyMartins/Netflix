@@ -12,7 +12,7 @@ const Movie = forwardRef(
       >
         <img src={image} className="rounded-md" />
         <div className="absolute -bottom-10 hidden group-hover:block">
-          <div className="flex items-center pl-2 w-80 h-10 bg-foreground/50">
+          <div className="flex items-center pl-2 py-2 w-80 min-h-10 bg-foreground/50">
             <span className="text-lg font-semibold">{name}</span>
           </div>
         </div>

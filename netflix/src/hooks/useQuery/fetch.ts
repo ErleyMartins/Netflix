@@ -13,7 +13,6 @@ function buildUrl(
 ): string {
   const url = `${import.meta.env.VITE_URL_API}/${endpoint}`;
 
-  console.log({ url });
   if (queryStringObj) {
     return `${url}?${qs.stringify(queryStringObj)}`;
   }
@@ -27,6 +26,7 @@ export async function axiosCall<TData>(
   { queryString, signal }: Params
 ): Promise<Response<TData>> {
   const url = buildUrl(endpoint, queryString);
+  console.log(url);
   try {
     const response = await axios({
       method,

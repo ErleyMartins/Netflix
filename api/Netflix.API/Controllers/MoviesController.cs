@@ -19,11 +19,11 @@ public class MoviesController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<PageList<MovieDto>>> GetAll([FromQuery] PageParams pageParams)
+    public async Task<ActionResult<PageList<MovieDto>>> GetAll([FromQuery] PageParams pageParams, string? terms = null)
     {
         try
         {
-            var movies = await _movieService.GetAll(pageParams);
+            var movies = await _movieService.GetAll(pageParams, terms);
 
             if (movies.Any())
             {

@@ -14,9 +14,17 @@ public class MovieRepository : IMovieRepository
     _context = context;
   }
 
-  public Task<PageList<Movie>> FindAll(PageParams pageParams)
+  public Task<PageList<Movie>> FindAll(PageParams pageParams, string? terms = null)
   {
-    var query = _context.Movies.OrderByDescending(movie => movie.ReleaseYear);
+    IQueryable<Movie> query = _context.Movies;
+
+    if (!string.IsNullOrWhiteSpace(terms))
+    {
+      query = query.Where(movie => movie.Title.ToLower().Contains((terms ?? "").ToLower().Trim()));
+    }
+
+    query = query.OrderByDescending(movie => movie.ReleaseYear);
+
     return PageList<Movie>.Create(query, pageParams.PageNumber, pageParams.PageSize);
   }
 
