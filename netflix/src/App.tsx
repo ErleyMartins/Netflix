@@ -1,15 +1,23 @@
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 
 import { Info, Play } from "components/Button";
 import { Header } from "components/Header";
-import { ListMovies } from "components/ListMovies";
+import { ListMovies, MovieProps } from "components/ListMovies";
+import { Providers } from "components/Providers";
 
 import { IMAGES } from "utils/constants";
 
+const MOVIES = [...new Array(30).keys()].map<MovieProps>(() => ({
+  image: IMAGES.thumb[Math.floor(Math.random() * 12)],
+  name: "Queen's Gambit",
+}));
+
 export default function App(): ReactElement {
+  const [search, setSearch] = useState("");
+
   return (
-    <div>
-      <Header />
+    <Providers>
+      <Header search={search} onSearchChange={setSearch} />
       <div className="relative z-0">
         <img src={IMAGES.background} className="bg-gradient-to-b" />
         <div className="absolute bottom-0 left-0 pl-24 pb-36">
@@ -26,7 +34,7 @@ export default function App(): ReactElement {
           </div>
         </div>
       </div>
-      <ListMovies />
-    </div>
+      <ListMovies movies={MOVIES} />
+    </Providers>
   );
 }
