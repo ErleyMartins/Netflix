@@ -1,0 +1,32 @@
+import { ReactElement } from "react";
+
+import { Info, Play } from "components/Button";
+import { Header } from "components/Header";
+import { ListMovies } from "components/ListMovies";
+
+import { IMAGES } from "utils/constants";
+
+export default function App(): ReactElement {
+  return (
+    <div>
+      <Header />
+      <div className="relative z-0">
+        <img src={IMAGES.background} className="bg-gradient-to-b" />
+        <div className="absolute bottom-0 left-0 pl-24 pb-36">
+          <div className="grid gap-2">
+            <div className="flex gap-4 items-center">
+              <img src={IMAGES.netflix} />
+              <b className="text-xl">S H O W</b>
+            </div>
+            <b className="text-9xl">MAID</b>
+            <div className="flex gap-4">
+              <Play />
+              <Info />
+            </div>
+          </div>
+        </div>
+      </div>
+      <ListMovies />
+    </div>
+  );
+}
